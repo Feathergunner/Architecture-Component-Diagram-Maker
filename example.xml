@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<data>
+	<component label="Component A" order_number="1" colorstring="blue">
+		<class label="Class 1" order_number="1">
+			<method label="method1()" order_number="1"></method>
+			<method label="method2()" order_number="2"></method>
+		</class>
+		<class label="Class 2" order_number="2">
+			<method label="method3()" order_number="1"></method>
+			<method label="method4()" order_number="2"></method>
+		</class>
+	</component>
+	<component label="Component B" order_number="2" colorstring="red">
+		<class label="Class 3" order_number="1">
+			<method label="method5()" order_number="1"></method>
+			<method label="method6()" order_number="2"></method>
+		</class>
+		<class label="Class 4" order_number="2">
+			<method label="method7()" order_number="2"></method>
+			<method label="method8()" order_number="3"></method>
+			<method label="method9()" order_number="1"></method>
+		</class>
+	</component>
+	<component label="Component C" order_number="3" colorstring="green">
+		<class label="Class 5" order_number="1">
+			<method label="method10()" order_number="1"></method>
+		</class>
+	</component>
+	<action source="method1()" target="method2()"></action>
+	<action source="method2()" target="method3()"></action>
+	<action source="method3()" target="method4()"></action>
+	<action source="method4()" target="method5()"></action>
+	<action source="method5()" target="method6()"></action>
+	<action source="method6()" target="method7()"></action>
+	<action source="method7()" target="method2()"></action>
+	<action source="method5()" target="method3()"></action>
+	<action source="method2()" target="method8()"></action>
+	<action source="method8()" target="method9()"></action>
+	<action source="method9()" target="method6()"></action>
+	<action source="method9()" target="method10()"></action>
+</data>
