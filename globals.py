@@ -3,9 +3,9 @@
 
 import re
 
-tex_global_scale_factor = 0.6
+tex_global_scale_factor = 0.5
 
-box_method_width = 5.5
+box_method_width = 7
 box_method_height = 1.5
 
 box_class_space_left = 0.5
@@ -21,6 +21,7 @@ box_component_space_inner = 0.5
 box_component_space_bottom = 0.5
 
 inter_component_space = 3
+inter_component_space_v = 1
 
 def clean_string(string):
 	return re.sub("[^A-Za-z0-9]", "", string)

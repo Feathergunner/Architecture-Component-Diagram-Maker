@@ -19,16 +19,14 @@ class ComponentContainer:
 	def add_classcontainer(self, new_class):
 		self.classcontainer.append(new_class)
 		
-	def draw(self, diagram, x, grid_x):
-		print ("draw component at x: "+str(x))
+	def draw(self, diagram, x, y, grid_x, grid_y):
 		# draw box
-		diagram.add_component_box(x=x, y=0, height=self.get_height(), colorstring=self.colorstring+"!20", label=self.label)
+		diagram.add_component_box(x=x, y=y, height=self.get_height(), colorstring=self.colorstring+"!20", label=self.label)
 		# draw subboxes:
 		self.classcontainer.sort(key = lambda x: x.order_number)
 		offset_y = globals.box_component_space_top
-		grid_y = 0
 		for classc in self.classcontainer:
-			classc.draw(diagram=diagram, x=x+globals.box_component_space_left, y=-offset_y, color=self.colorstring, grid_x=grid_x, grid_y=grid_y)
+			classc.draw(diagram=diagram, x=x+globals.box_component_space_left, y=y-offset_y, color=self.colorstring, grid_x=grid_x, grid_y=grid_y)
 			offset_y += classc.get_height()+globals.box_component_space_inner
 			grid_y += 100
 			
@@ -40,6 +38,12 @@ class ComponentContainer:
 		totalheight += globals.box_component_space_bottom
 		
 		return totalheight
+
+	def get_number_of_methods(self):
+		number_of_methods = 0
+		for c in self.classcontainer:
+			number_of_methods += c.get_number_of_methods()
+		return number_of_methods
 		
 	def get_clean_label(self):
 		return globals.clean_string(self.label)

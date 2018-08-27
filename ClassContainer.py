@@ -16,7 +16,6 @@ class ClassContainer:
 		self.methods.append(new_method)
 		
 	def draw(self, diagram, x, y, color, grid_x, grid_y):
-		print ("draw class at x: "+str(x)+", y: "+str(y))
 		# draw box
 		diagram.add_class_box(x=x, y=y, height=self.get_height(), colorstring=color+"!40", label=self.label)
 		# draw subboxes:
@@ -32,3 +31,6 @@ class ClassContainer:
 		
 	def get_clean_label(self):
 		return globals.clean_string(self.label)
+      
+	def get_number_of_methods(self):
+		return len(self.methods)
