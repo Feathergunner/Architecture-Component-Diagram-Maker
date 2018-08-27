@@ -14,6 +14,7 @@ box_class_space_top = 1.5
 box_class_space_inner = 0.5
 box_class_space_bottom = 0.5
 
+
 box_component_space_left = 0.5
 box_component_space_right = 0.5
 box_component_space_top = 1.5

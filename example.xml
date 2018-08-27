@@ -1,41 +1,58 @@
 <?xml version="1.0"?>
 <data>
 	<component label="Component A" order_number="1" colorstring="blue">
-		<class label="Class 1" order_number="1">
-			<method label="method1()" order_number="1"></method>
-			<method label="method2()" order_number="2"></method>
-		</class>
-		<class label="Class 2" order_number="2">
-			<method label="method3()" order_number="1"></method>
-			<method label="method4()" order_number="2"></method>
-		</class>
+		<component label="Class 1" order_number="1">
+			<method label="method1()" order_number="1" id="ma"></method>
+			<method label="method2()" order_number="2" id="mb"></method>
+		</component>
+		<component label="Class 2" order_number="2">
+			<method label="method3()" order_number="1" id="mc"></method>
+			<method label="method4()" order_number="2" id="md"></method>
+		</component>
 	</component>
 	<component label="Component B" order_number="2" colorstring="red">
-		<class label="Class 3" order_number="1">
-			<method label="method5()" order_number="1"></method>
-			<method label="method6()" order_number="2"></method>
-		</class>
-		<class label="Class 4" order_number="2">
-			<method label="method7()" order_number="2"></method>
-			<method label="method8()" order_number="3"></method>
-			<method label="method9()" order_number="1"></method>
-		</class>
+		<component label="Class 3" order_number="1">
+			<method label="method5()" order_number="1" id="me"></method>
+			<method label="method6()" order_number="2" id="mf"></method>
+		</component>
+		<component label="Class 4" order_number="2">
+			<method label="method7()" order_number="2" id="mg"></method>
+			<method label="method8()" order_number="3" id="mh"></method>
+			<method label="method9()" order_number="1" id="mi"></method>
+		</component>
 	</component>
 	<component label="Component C" order_number="3" colorstring="green">
-		<class label="Class 5" order_number="1">
-			<method label="method10()" order_number="1"></method>
-		</class>
+		<component label="Class 5" order_number="1">
+			<component label="Subclass 1">
+				<component label="Subsubclass 1">
+					<method label="method14()" id="my"></method>
+				</component>
+			</component>
+			<method label="method10()" order_number="1" id="mj"></method>
+		</component>
 	</component>
-	<action source="method1()" target="method2()"></action>
-	<action source="method2()" target="method3()"></action>
-	<action source="method3()" target="method4()"></action>
-	<action source="method4()" target="method5()"></action>
-	<action source="method5()" target="method6()"></action>
-	<action source="method6()" target="method7()"></action>
-	<action source="method7()" target="method2()"></action>
-	<action source="method5()" target="method3()"></action>
-	<action source="method2()" target="method8()"></action>
-	<action source="method8()" target="method9()"></action>
-	<action source="method9()" target="method6()"></action>
-	<action source="method9()" target="method10()"></action>
+	<component label="Component D" order_number="3" colorstring="green">
+		<component label="Class 6" order_number="1">
+		</component>
+	</component>
+	<component label="Component E" order_number="3" colorstring="green">
+		<method label="method11()" order_number="1" ></method>
+	</component>
+	<component label="Component F" order_number="3" colorstring="green">
+		<method label="method12()" order_number="1" ></method>
+		<method label="method13()" order_number="2" id="mz"></method>
+	</component>
+	<action source="ma" target="mb"></action>
+	<action source="mb" target="mc"></action>
+	<action source="mc" target="md"></action>
+	<action source="md" target="me"></action>
+	<action source="me" target="mf"></action>
+	<action source="mf" target="mg"></action>
+	<action source="mg" target="mb"></action>
+	<action source="me" target="mc"></action>
+	<action source="mb" target="mh"></action>
+	<action source="mh" target="mi"></action>
+	<action source="mi" target="mf"></action>
+	<action source="mi" target="mj"></action>
+	<action source="mz" target="my"></action>
 </data>

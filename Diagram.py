@@ -8,7 +8,6 @@ import globals
 class Diagram:
 	def __init__(self):
 		self.componentcontainer = []
-		self.classcontainer = []
 		self.methods = []
 		self.actions = []
 		self.tikzstring = ""
@@ -16,15 +15,9 @@ class Diagram:
 	def add_component(self, new_component):
 		self.componentcontainer.append(new_component)
 		return len(self.componentcontainer)-1
-		
-	def add_class(self, new_class, master_component_id):
-		self.classcontainer.append(new_class)
-		self.componentcontainer[master_component_id].add_classcontainer(new_class)
-		return len(self.classcontainer)-1
 	
-	def add_method(self, new_method, master_class_id):
+	def add_method(self, new_method):
 		self.methods.append(new_method)
-		self.classcontainer[master_class_id].add_method(new_method)
 		return len(self.methods)-1
 		
 	def add_action(self, new_action):
@@ -92,11 +85,11 @@ class Diagram:
 				target_action_index = 1
 				target_angle_offset = 0
 				
-			self.tikzstring += "\\draw[thick,->] ("+action.source+"."+str(source_angle-source_angle_offset)+") to[out="+str(source_angle-source_angle_offset)+", in="+str(target_angle-target_angle_offset)+"] ("+action.target+"."+str(target_angle-target_angle_offset)+");\n"
+			final_source_angle = int(source_angle-source_angle_offset)
+			final_target_angle = int(target_angle-target_angle_offset)
+				
+			self.tikzstring += "\\draw[thick,->] ("+action.source+"."+str(final_source_angle)+") to[out="+str(final_source_angle)+", in="+str(final_target_angle)+"] ("+action.target+"."+str(final_target_angle)+");\n"
 		print("Done.")
-			
-	def get_class_index(self, classname):
-		return [i for i,c in enumerate(self.classcontainer) if c.label == classname][0]
 		
 	def get_component_index(self, componentname):
 		return [i for i,c in enumerate(self.componentcontainer) if c.label == componentname][0]
@@ -107,12 +100,8 @@ class Diagram:
 	def add_method_box(self, x, y, colorstring, label, id):
 		self.tikzstring += "\\node [anchor=north west, rectangle, draw, fill="+colorstring+", text width="+str(globals.box_method_width)+"cm, text centered, rounded corners, minimum height="+str(globals.box_method_height)+"cm] ("+id+") at ("+str(x)+","+str(y)+") {\\textbf{"+label+"}};\n"
 		
-	def add_class_box(self, x, y, height, colorstring, label):
-		self.tikzstring += "\\draw [draw, fill="+colorstring+", rounded corners] ("+str(x)+","+str(y)+") rectangle ("+str(x+globals.get_box_class_totalwidth())+","+str(y-height)+");\n"
-		self.tikzstring += "\\node [anchor=north west] (CLASS-"+globals.clean_string(label)+")  at ("+str(x+0.5)+","+str(y-0.5)+") {\\large\\textbf{"+label+"}};\n"
-		
-	def add_component_box(self, x, y, height, colorstring, label):
-		self.tikzstring += "\\draw [draw, fill="+colorstring+", rounded corners] ("+str(x)+","+str(y)+") rectangle ("+str(x+globals.get_box_component_totalwidth())+","+str(y-height)+");\n"
+	def add_component_box(self, x, y, width, height, colorstring, label):
+		self.tikzstring += "\\draw [draw, fill="+colorstring+", rounded corners] ("+str(x)+","+str(y)+") rectangle ("+str(x+width)+","+str(y-height)+");\n"
 		self.tikzstring += "\\node [anchor=north west] (COMP-"+globals.clean_string(label)+") at ("+str(x+0.5)+","+str(y-0.5)+") {\\large\\textbf{"+label+"}};\n"
 		
 	def write_texfile(self, outputfilename="test.tex"):
