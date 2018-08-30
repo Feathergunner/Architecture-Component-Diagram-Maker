@@ -85,7 +85,7 @@ class ComponentContainer:
 			comp.set_width(new_width-globals.box_component_space_left-globals.box_component_space_right)
 
 	def get_number_of_methods(self):
-		number_of_methods = 0
+		number_of_methods = len(self.methods)
 		for comp in self.subcomponents:
 			number_of_methods += comp.get_number_of_methods()
 		return number_of_methods
